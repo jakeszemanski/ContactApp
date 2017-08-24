@@ -4,9 +4,14 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 
 } from 'react-native'
+import { getTheme } from 'react-native-material-kit'
+
+const theme = getTheme();
+const styles = require('../styles');
 
 export default class ContactPanel extends Component {
   constructor(props) {
@@ -19,10 +24,18 @@ export default class ContactPanel extends Component {
   render() {
     console.log("this.props", this.props)
     return (
-      <TouchableOpacity onPress={this.props.handlePress(this.props.contact)}>
-        <Text>{this.props.contact.name}</Text>
-        <Text>{this.props.contact.companyName}</Text>
-      </TouchableOpacity>
+      
+        <TouchableOpacity style={theme.cardStyle} onPress={this.props.handlePress(this.props.contact)}>
+          <View style={styles.row}>
+            <Image source={{uri: this.props.contact.smallImageURL}}
+            style={styles.thumbnailImage}/>
+            <View style={styles.col}>
+              <Text style={styles.contactName}>{this.props.contact.name}</Text>
+              <Text style={styles.contactCompany}>{this.props.contact.companyName}</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+     
     )
   }
 };

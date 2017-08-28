@@ -75,5 +75,11 @@ module.exports = StyleSheet.create({
     backgroundColor: 'gray',
     borderWidth: 0.5,
     borderColor: 'gray'
-  }
+  },
+  contactPageName: {
+    flex: 1,
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
 });

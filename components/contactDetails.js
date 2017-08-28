@@ -14,16 +14,32 @@ export default class ContactDetails extends Component {
     super(props)
 
   }
-  renderPhoneNumbers() {
-    Object.keys(this.props.contact.phone).forEach((key) => {
-      return (
-        <View style={styles.card}>
-          <Text style={styles.contactName}>PHONE:</Text>
-          <Text style={styles.contactName}>{key}</Text>
-        </View>
-      )
-    })
+  renderName() {
+    return (
+    <View style={styles.card}>
+        <Text style={styles.contactName}>{this.props.contact.name}</Text>
+        <Text style={styles.contactCompany}>{this.props.contact.companyName}</Text>
+      </View>
+    )
   }
+  renderPhoneNumbers() {
+    return (
+      Object.keys(this.props.contact.phone).map((key, value) => {
+        return (
+          <View style={styles.card}>
+            <Text style={styles.contactPageName}>PHONE:</Text>
+            <Text style={styles.contactPageName}>{this.props.contact.phone[key]}</Text>
+            <Text style={styles.contactName}>{key}</Text>
+          </View>
+        )
+      })
+    )
+  }
+  renderAddress() {
+    return (
+      Object.keys(this.props.contact))
+  }
+  
 
   render() {
     return(
@@ -37,10 +53,7 @@ export default class ContactDetails extends Component {
         <View style={styles.card}>
           <Image source={{uri: this.props.contact.largeImageURL}} style={styles.largeImage} />
         </View>
-        <View style={styles.card}>
-          <Text style={styles.contactName}>{this.props.contact.name}</Text>
-          <Text style={styles.contactCompany}>{this.props.contact.companyName}</Text>
-        </View>
+        {this.renderName()}
         {this.renderPhoneNumbers()}
       </View>
 

@@ -15,7 +15,7 @@ module.exports = StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
     padding: 1,
-    marginTop: Platform.OS === 'android' ? 56 : 0,
+    marginTop: 17
   },
   row: {
     flexDirection: 'row',
@@ -47,10 +47,16 @@ module.exports = StyleSheet.create({
     width: 50,
     height: 50,
   },
+   largeImage: {
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   contactName: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold'
   },
   contactCompany: {
@@ -58,6 +64,16 @@ module.exports = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     color: '#696969'
-
+  },
+  card: {
+    flex: 1,
+    padding: 15,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+  },
+  topBar: {
+    backgroundColor: 'gray',
+    borderWidth: 0.5,
+    borderColor: 'gray'
   }
 });

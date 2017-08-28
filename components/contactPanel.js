@@ -25,7 +25,7 @@ export default class ContactPanel extends Component {
     console.log("this.props", this.props)
     return (
       
-        <TouchableOpacity style={theme.cardStyle} onPress={this.props.handlePress(this.props.contact)}>
+        <TouchableOpacity style={styles.card} onPress={this.props.handlePress(this.props.contact)}>
           <View style={styles.row}>
             <Image source={{uri: this.props.contact.smallImageURL}}
             style={styles.thumbnailImage}/>

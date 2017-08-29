@@ -61,6 +61,14 @@ export default class ContactDetails extends Component {
     let month = objDate.toLocaleString(locale, { month: "long" });
     return month + ` ${day}, ` + year 
   }
+
+  renderEmail() {
+    return (
+      <View style={styles.card}>
+        <Text>EMAIL:</Text>
+        <Text style={styles.contactPageName}>{this.props.contact.emailAddress}</Text>
+      </View>)
+  }
   
 
   render() {
@@ -79,6 +87,7 @@ export default class ContactDetails extends Component {
         {this.renderPhoneNumbers()}
         {this.renderAddress()}
         {this.renderBirthdate()}
+        {this.renderEmail()}
       </View>
 
     )

@@ -109,5 +109,8 @@ module.exports = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     flexDirection: 'row'
+  },
+  favoriteMain: {
+    flexDirection: 'row'
   }
 });

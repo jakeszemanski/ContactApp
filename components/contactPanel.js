@@ -12,6 +12,7 @@ import { getTheme } from 'react-native-material-kit'
 
 const theme = getTheme();
 const styles = require('../styles');
+const favoriteStar = require('../assets/favoriteStarTrue/favoriteTrue.png')
 
 export default class ContactPanel extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class ContactPanel extends Component {
   }
 
   render() {
-    console.log("this.props", this.props.contact.phone.work)
+    console.log("this.props", this.props.contact)
     return (
       
         <TouchableOpacity style={styles.card} onPress={this.props.handlePress(this.props.contact)}>
@@ -30,7 +31,10 @@ export default class ContactPanel extends Component {
             <Image source={{uri: this.props.contact.smallImageURL}}
             style={styles.thumbnailImage}/>
             <View style={styles.col}>
-              <Text style={styles.contactName}>{this.props.contact.name}</Text>
+              <View style={styles.row}>
+                <Image source={this.props.contact.isFavorite ? favoriteStar : null}/>
+                <Text style={styles.contactPageName}>{this.props.contact.name}</Text>
+              </View>
               <Text style={styles.contactCompany}>{this.props.contact.companyName}</Text>
             </View>
           </View>

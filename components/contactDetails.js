@@ -36,8 +36,30 @@ export default class ContactDetails extends Component {
     )
   }
   renderAddress() {
+    let address = this.props.contact.address
     return (
-      Object.keys(this.props.contact))
+      <View style={styles.card}>
+        <Text>ADDRESS:</Text>
+        <Text style={styles.contactPageName}>{address.street}</Text>
+        <Text style={styles.contactPageName}>{address.city}, {address.state} {address.zipCode}, {address.country} </Text>
+      </View>
+
+    )
+  }
+  renderBirthdate() {
+    return (
+      <View style={styles.card}>
+        <Text>BIRTHDATE:</Text>
+        <Text style={styles.contactPageName}>{this.formatDate(this.props.contact.birthdate)}</Text>
+      </View>)
+  }
+  formatDate(dateToFormat) {
+    let objDate = new Date(dateToFormat)
+    let day = objDate.getDay()
+    let year = objDate.getFullYear()
+    let locale = "en-us"
+    let month = objDate.toLocaleString(locale, { month: "long" });
+    return month + ` ${day}, ` + year 
   }
   
 
@@ -55,6 +77,8 @@ export default class ContactDetails extends Component {
         </View>
         {this.renderName()}
         {this.renderPhoneNumbers()}
+        {this.renderAddress()}
+        {this.renderBirthdate()}
       </View>
 
     )

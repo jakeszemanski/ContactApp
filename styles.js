@@ -82,4 +82,32 @@ module.exports = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   },
+  contactTitle: {
+    flex: 1,
+    textAlign: 'left',
+    fontSize: 13,
+    color: '#696969'
+  },
+  contactInfo: {
+    flex: 1,
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 10,
+    flexDirection: 'row'
+  },
+  contactPhone: {
+    flex: 1,
+    textAlign: 'right',
+    fontSize: 13,
+    color: '#696969',
+    flexDirection: 'row'
+  },
+    contactAddress: {
+    flex: 1,
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: 'bold',
+    flexDirection: 'row'
+  }
 });

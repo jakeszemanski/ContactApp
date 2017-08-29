@@ -27,21 +27,28 @@ export default class ContactDetails extends Component {
       Object.keys(this.props.contact.phone).map((key, value) => {
         return (
           <View style={styles.card}>
-            <Text style={styles.contactPageName}>PHONE:</Text>
-            <Text style={styles.contactPageName}>{this.props.contact.phone[key]}</Text>
-            <Text style={styles.contactName}>{key}</Text>
+            <Text style={styles.contactTitle}>PHONE:</Text>
+            <Text style={styles.contactInfo}>{this.formatPhoneNumber(this.props.contact.phone[key])}</Text>
+            <Text style={styles.contactPhone}>{key}</Text>
           </View>
         )
       })
     )
   }
+  formatPhoneNumber(numberToFormat){
+    console.log("to format", numberToFormat)
+    let areaCode = numberToFormat.substring(0,3)
+    let mainNumber = numberToFormat.substring(4, 12)
+    console.log("after", mainNumber)
+    return '(' + areaCode + ')' + ' ' + mainNumber
+  }
   renderAddress() {
     let address = this.props.contact.address
     return (
       <View style={styles.card}>
-        <Text>ADDRESS:</Text>
-        <Text style={styles.contactPageName}>{address.street}</Text>
-        <Text style={styles.contactPageName}>{address.city}, {address.state} {address.zipCode}, {address.country} </Text>
+        <Text style={styles.contactTitle}>ADDRESS:</Text>
+        <Text style={styles.contactAddress}>{address.street}</Text>
+        <Text style={styles.contactAddress}>{address.city}, {address.state} {address.zipCode}, {address.country} </Text>
       </View>
 
     )
@@ -49,8 +56,8 @@ export default class ContactDetails extends Component {
   renderBirthdate() {
     return (
       <View style={styles.card}>
-        <Text>BIRTHDATE:</Text>
-        <Text style={styles.contactPageName}>{this.formatDate(this.props.contact.birthdate)}</Text>
+        <Text style={styles.contactTitle}>BIRTHDATE:</Text>
+        <Text style={styles.contactInfo}>{this.formatDate(this.props.contact.birthdate)}</Text>
       </View>)
   }
   formatDate(dateToFormat) {
@@ -65,8 +72,8 @@ export default class ContactDetails extends Component {
   renderEmail() {
     return (
       <View style={styles.card}>
-        <Text>EMAIL:</Text>
-        <Text style={styles.contactPageName}>{this.props.contact.emailAddress}</Text>
+        <Text style={styles.contactTitle}>EMAIL:</Text>
+        <Text style={styles.contactInfo}>{this.props.contact.emailAddress}</Text>
       </View>)
   }
   

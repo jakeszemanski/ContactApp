@@ -22,7 +22,7 @@ export default class ContactPanel extends Component {
   }
 
   render() {
-    console.log("this.props", this.props)
+    console.log("this.props", this.props.contact.phone.work)
     return (
       
         <TouchableOpacity style={styles.card} onPress={this.props.handlePress(this.props.contact)}>

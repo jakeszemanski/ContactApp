@@ -31,6 +31,13 @@ export default class ContactList extends Component {
   handleContactPress(selectedContact){
     this.setState({selectedContact: selectedContact})
   }
+  handleFavoritePress(favoritedContact) {
+    console.log("fav", favoritedContact)
+    console.log("state for fav", this.state)
+    let updatedContact = favoritedContact
+    updatedContact.isFavorite = !favoritedContact.isFavorite
+
+  }
 
   favoriteFilter(contact) {
     if (contact.isFavorite) {
@@ -65,7 +72,8 @@ export default class ContactList extends Component {
   renderList() {
     if (this.state.selectedContact) {
       return (
-        <ContactDetails contact={this.state.selectedContact} onPressBack={() => this.handleContactPress.bind(this, null)}/>
+        <ContactDetails contact={this.state.selectedContact} onPressBack={() => this.handleContactPress.bind(this, null)}
+         handleFavorite={() => this.handleFavoritePress.bind(this, this.state.selectedContact)}/>
       )
     } else if (this.state.selectedContact === null && this.state.contacts) {
       return (

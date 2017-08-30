@@ -118,10 +118,12 @@ module.exports = StyleSheet.create({
   left: {
     marginLeft: 10,
     marginTop:25,
-    fontSize: 20,
-    color: '#00bfff',
     flex: 1,
     alignSelf: 'flex-start'
+  },
+  detailsHeader: {
+    fontSize: 20,
+    color: '#00bfff',
   },
   right: {
     marginRight: 10,

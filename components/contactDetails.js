@@ -9,10 +9,15 @@ import {
 } from 'react-native'
 const styles = require('../styles');
 const favoriteStar = require('../assets/favoriteStarTrue/favoriteTrue.png')
+const emptyFavorite = require('../assets/favoriteStarFalse/favoriteFalse.png')
+const defaultProfilePic = require('../assets/userLarge/userLarge.png')
 
 export default class ContactDetails extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      favorited: this.props.contact.isFavorite
+    }
 
   }
 
@@ -38,10 +43,8 @@ export default class ContactDetails extends Component {
     )
   }
   formatPhoneNumber(numberToFormat){
-    console.log("to format", numberToFormat)
     let areaCode = numberToFormat.substring(0,3)
     let mainNumber = numberToFormat.substring(4, 12)
-    console.log("after", mainNumber)
     return '(' + areaCode + ')' + ' ' + mainNumber
   }
   renderAddress() {
@@ -78,19 +81,29 @@ export default class ContactDetails extends Component {
         <Text style={styles.contactInfo}>{this.props.contact.emailAddress}</Text>
       </View>)
   }
+  onFavoritePress() {
+    
+  }
   
 
   render() {
+    let profileImage = {uri: this.props.contact.largeImageURL}
     return(
       <View>
-        <TouchableOpacity onPress={this.props.onPressBack(null)}>
-          <View style={styles.topBar}>
-            <Text style={styles.left}>Contacts</Text>
-            <Image style={styles.right} source={this.props.contact.isFavorite ? favoriteStar : null}/>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.topBar}>
+          <TouchableOpacity onPress={this.props.onPressBack(null)} style={styles.left}>
+            <Text style={styles.detailsHeader}>Contacts</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.right} onPress={this.props.handleFavorite(this.props.contact)}>
+            <Image  source={this.props.contact.isFavorite ? favoriteStar : emptyFavorite}/>
+          </TouchableOpacity>
+        </View>
+        
         <View style={styles.card}>
-          <Image source={{uri: this.props.contact.largeImageURL}} style={styles.largeImage} />
+          <Image source={profileImage} 
+          style={styles.largeImage}
+          onError={() => {profileImage = defaultProfilePic}}
+          defaultSource={defaultProfilePic} />
         </View>
         {this.renderName()}
         {this.renderPhoneNumbers()}

@@ -8,12 +8,14 @@ import {
   Image
 } from 'react-native'
 const styles = require('../styles');
+const favoriteStar = require('../assets/favoriteStarTrue/favoriteTrue.png')
 
 export default class ContactDetails extends Component {
   constructor(props) {
     super(props)
 
   }
+
   renderName() {
     return (
     <View style={styles.card}>
@@ -83,8 +85,8 @@ export default class ContactDetails extends Component {
       <View>
         <TouchableOpacity onPress={this.props.onPressBack(null)}>
           <View style={styles.topBar}>
-            <Text>Contacts</Text>
-            <Text>{this.props.contact.isFavorite}</Text>
+            <Text style={styles.left}>Contacts</Text>
+            <Image style={styles.right} source={this.props.contact.isFavorite ? favoriteStar : null}/>
           </View>
         </TouchableOpacity>
         <View style={styles.card}>

@@ -13,7 +13,7 @@ module.exports = StyleSheet.create({
     flex: 1,
     width: width,
     alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
     padding: 1,
     marginTop: 17
   },
@@ -68,12 +68,7 @@ module.exports = StyleSheet.create({
   card: {
     flex: 1,
     padding: 15,
-    borderColor: 'gray',
-    borderWidth: 0.5,
-  },
-  topBar: {
-    backgroundColor: 'gray',
-    borderWidth: 0.5,
+    borderWidth: 1,
     borderColor: 'gray'
   },
   contactPageName: {
@@ -112,5 +107,26 @@ module.exports = StyleSheet.create({
   },
   favoriteMain: {
     flexDirection: 'row'
-  }
+  },
+  topBar: {
+    backgroundColor: '#d0d0d0',
+    height:64,
+    flexDirection:'row',
+    borderWidth: 1,
+    borderColor: 'gray'
+  },
+  left: {
+    marginLeft: 10,
+    marginTop:25,
+    fontSize: 20,
+    color: '#00bfff',
+    flex: 1,
+    alignSelf: 'flex-start'
+  },
+  right: {
+    marginRight: 10,
+    marginBottom:19,
+    alignSelf: 'flex-end',
+    resizeMode: 'contain',
+  },
 });

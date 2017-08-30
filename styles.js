@@ -129,4 +129,10 @@ module.exports = StyleSheet.create({
     alignSelf: 'flex-end',
     resizeMode: 'contain',
   },
+  listTitle: {
+    backgroundColor: 'gray',
+    fontWeight: 'bold',
+    textAlign: 'left',
+    paddingLeft: 10
+  }
 });

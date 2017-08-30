@@ -13,6 +13,7 @@ import { getTheme } from 'react-native-material-kit'
 const theme = getTheme();
 const styles = require('../styles');
 const favoriteStar = require('../assets/favoriteStarTrue/favoriteTrue.png')
+const defaultProfilePic = require('../assets/userSmall/userIconSmall.png')
 
 export default class ContactPanel extends Component {
   constructor(props) {
@@ -22,13 +23,17 @@ export default class ContactPanel extends Component {
     }
   }
 
+
   render() {
     console.log("this.props", this.props.contact)
+    let profileImage = {uri: this.props.contact.smallImageURL}
     return (
       
         <TouchableOpacity style={styles.card} onPress={this.props.handlePress(this.props.contact)}>
           <View style={styles.row}>
-            <Image source={{uri: this.props.contact.smallImageURL}}
+            <Image source={profileImage}
+            onError={() => {profileImage = defaultProfilePic}}
+            defaultSource={defaultProfilePic}
             style={styles.thumbnailImage}/>
             <View style={styles.col}>
               <View style={styles.row}>

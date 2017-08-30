@@ -31,21 +31,52 @@ export default class ContactList extends Component {
   handleContactPress(selectedContact){
     this.setState({selectedContact: selectedContact})
   }
-  renderContacts() {
+
+  favoriteFilter(contact) {
+    if (contact.isFavorite) {
+      return contact
+    }
+  }
+  otherContactFilter(contact) {
+    if (contact.isFavorite === false) {
+      return contact
+    }
+  }
+  renderFavorites() {
+    let favorites = this.state.contacts.filter(this.favoriteFilter)
+    return (
+      favorites.map((contact, index) => {
+        return (
+          <ContactPanel contact={contact} key={index} handlePress={() => this.handleContactPress.bind(this, contact)}/>
+        )
+      })
+    )
+  }
+  renderOtherContacts() {
+    let otherContacts = this.state.contacts.filter(this.otherContactFilter)
+    return (
+      otherContacts.map((contact, index) => {
+        return (
+          <ContactPanel contact={contact} key={index} handlePress={() => this.handleContactPress.bind(this, contact)}/>
+        )
+      })
+    )
+  }
+  renderList() {
     if (this.state.selectedContact) {
       return (
         <ContactDetails contact={this.state.selectedContact} onPressBack={() => this.handleContactPress.bind(this, null)}/>
       )
     } else if (this.state.selectedContact === null && this.state.contacts) {
       return (
-        this.state.contacts.map((contact, index) => {
-          return (
-            <ContactPanel contact={contact} key={index} handlePress={() => this.handleContactPress.bind(this, contact)}/> 
-          )
-        })
-      ) 
-    } else {
-      return <Text>Loading</Text>
+        <View>
+          <Text style={styles.listTitle}>Favorites</Text>
+          {this.renderFavorites()}
+          <Text style={styles.listTitle}>Other Contacts</Text>
+          {this.renderOtherContacts()}
+        </View>
+
+      )
     }
   }
 
@@ -53,8 +84,8 @@ export default class ContactList extends Component {
     return (
       <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
-      { this.renderContacts()}
-       </View>
+        {this.renderList()}
+        </View>
       </ScrollView>
     )
   }

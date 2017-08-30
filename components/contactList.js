@@ -23,20 +23,18 @@ export default class ContactList extends Component {
   componentWillMount() {
     this.fetchContacts();
   }
+
   async fetchContacts() {
     let response = await fetch('https://s3.amazonaws.com/technical-challenge/v3/contacts.json')
     this.setState({contacts: await response.json(), selectedContact: this.state.selectedContact})
-    console.log("this.state", this.state)
   }
   handleContactPress(selectedContact){
     this.setState({selectedContact: selectedContact})
   }
   handleFavoritePress(favoritedContact) {
-    console.log("fav", favoritedContact)
-    console.log("state for fav", this.state)
     let updatedContact = favoritedContact
     updatedContact.isFavorite = !favoritedContact.isFavorite
-
+    this.setState({selectedContact: updatedContact})
   }
 
   favoriteFilter(contact) {

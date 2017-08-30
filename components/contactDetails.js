@@ -20,6 +20,12 @@ export default class ContactDetails extends Component {
     }
 
   }
+  componentWillReceiveProps(nextProps) {
+    if (this.props.contact.isFavorite !== nextProps.contact.isFavorited) {
+      return true
+    }
+    return false
+  }
 
   renderName() {
     return (
@@ -80,9 +86,6 @@ export default class ContactDetails extends Component {
         <Text style={styles.contactTitle}>EMAIL:</Text>
         <Text style={styles.contactInfo}>{this.props.contact.emailAddress}</Text>
       </View>)
-  }
-  onFavoritePress() {
-    
   }
   
 

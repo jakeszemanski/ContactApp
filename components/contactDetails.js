@@ -15,10 +15,6 @@ const defaultProfilePic = require('../assets/userLarge/userLarge.png')
 export default class ContactDetails extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      favorited: this.props.contact.isFavorite
-    }
-
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.contact.isFavorite !== nextProps.contact.isFavorited) {
@@ -37,9 +33,9 @@ export default class ContactDetails extends Component {
   }
   renderPhoneNumbers() {
     return (
-      Object.keys(this.props.contact.phone).map((key, value) => {
+      Object.keys(this.props.contact.phone).map((key) => {
         return (
-          <View style={styles.card}>
+          <View style={styles.card} key={key}>
             <Text style={styles.contactTitle}>PHONE:</Text>
             <Text style={styles.contactInfo}>{this.formatPhoneNumber(this.props.contact.phone[key])}</Text>
             <Text style={styles.contactPhone}>{key}</Text>
@@ -73,8 +69,8 @@ export default class ContactDetails extends Component {
   }
   formatDate(dateToFormat) {
     let objDate = new Date(dateToFormat)
-    let day = objDate.getDay()
-    let year = objDate.getFullYear()
+    let day = dateToFormat.substring(8, 10).replace(/^[0\.]+/, "")
+    let year = dateToFormat.substring(0,4)
     let locale = "en-us"
     let month = objDate.toLocaleString(locale, { month: "long" });
     return month + ` ${day}, ` + year 

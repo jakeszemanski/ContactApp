@@ -25,7 +25,6 @@ export default class ContactPanel extends Component {
 
 
   render() {
-    console.log("this.props", this.props.contact)
     let profileImage = {uri: this.props.contact.smallImageURL}
     return (
       

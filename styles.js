@@ -47,11 +47,19 @@ module.exports = StyleSheet.create({
     width: 50,
     height: 50,
   },
-   largeImage: {
-    width: 100,
-    height: 100,
+  imageCard: {
+    flex: 1,
+    padding: 15,
+    borderWidth: 1,
+    borderColor: 'gray',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+   largeImage: {
+    width: 150,
+    height: 150,
+    
+    flex: 1
   },
   contactName: {
     flex: 1,

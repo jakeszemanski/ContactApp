@@ -98,7 +98,7 @@ export default class ContactDetails extends Component {
           </TouchableOpacity>
         </View>
         
-        <View style={styles.card}>
+        <View style={styles.imageCard}>
           <Image source={profileImage} 
           style={styles.largeImage}
           onError={() => {profileImage = defaultProfilePic}}

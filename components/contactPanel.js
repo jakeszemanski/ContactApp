@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   Image
 
-} from 'react-native'
-import { getTheme } from 'react-native-material-kit'
+} from 'react-native';
 
-const theme = getTheme();
+var emoji = require('node-emoji');
+
 const styles = require('../styles');
 const favoriteStar = require('../assets/favoriteStarTrue/favoriteTrue.png')
 const defaultProfilePic = require('../assets/userSmall/userIconSmall.png')
@@ -26,6 +26,7 @@ export default class ContactPanel extends Component {
 
   render() {
     let profileImage = {uri: this.props.contact.smallImageURL}
+    let favoriteStar = emoji.get('star')
     return (
       
         <TouchableOpacity style={styles.card} onPress={this.props.handlePress(this.props.contact)}>
@@ -36,7 +37,7 @@ export default class ContactPanel extends Component {
             style={styles.thumbnailImage}/>
             <View style={styles.col}>
               <View style={styles.row}>
-                <Image source={this.props.contact.isFavorite ? favoriteStar : null}/>
+                <Text>{this.props.contact.isFavorite ? favoriteStar : null}</Text>
                 <Text style={styles.contactPageName}>{this.props.contact.name}</Text>
               </View>
               <Text style={styles.contactCompany}>{this.props.contact.companyName}</Text>

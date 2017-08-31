@@ -76,6 +76,9 @@ export default class ContactList extends Component {
     } else if (this.state.selectedContact === null && this.state.contacts) {
       return (
         <View>
+          <View style={styles.headerBar}>
+            <Text style={styles.titleContact}>Contacts</Text>
+          </View>
           <Text style={styles.listTitle}>Favorites</Text>
           {this.renderFavorites()}
           <Text style={styles.listTitle}>Other Contacts</Text>

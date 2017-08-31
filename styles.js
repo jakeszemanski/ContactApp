@@ -115,6 +115,15 @@ module.exports = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray'
   },
+  headerBar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d0d0d0',
+    height:64,
+    flexDirection:'row',
+    borderWidth: 1,
+    borderColor: 'gray'
+  },
   left: {
     marginLeft: 10,
     marginTop:25,
@@ -135,5 +144,10 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'left',
     paddingLeft: 10
+  },
+  titleContact: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold'
   }
 });

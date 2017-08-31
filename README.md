@@ -1,4 +1,6 @@
 # ContactApp
 Install react-native, node, and xcode to run.
 
-To run, cd into the project folder and enter: react-native run-ios
+into the project folder and enter: npm install
+
+Then to run in an xcode simulator run react-native run-ios

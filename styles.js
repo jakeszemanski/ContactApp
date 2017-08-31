@@ -1,5 +1,4 @@
 var {StyleSheet, Platform, Dimensions} = require('react-native');
-var {MKColor} = require('react-native-material-kit');
  
 
     var width = Dimensions.get('window').width; //full width
@@ -25,23 +24,6 @@ module.exports = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     marginLeft: 7, marginRight: 7,
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginTop: 10, marginBottom: 20,
-  },
-  legendLabel: {
-    textAlign: 'center',
-    color: '#666666',
-    marginTop: 10, marginBottom: 20,
-    fontSize: 12,
-    fontWeight: '300',
   },
   thumbnailImage: {
     width: 50,
